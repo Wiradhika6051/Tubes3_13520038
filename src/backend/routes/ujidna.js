@@ -9,7 +9,7 @@ router.post('/ujidna', function(req, res) {
   if(!rantai_dna_files || Object.keys(req.files).length==0){
     return res.status(400).send("Tidak ada file yang dikirimkan!")
   }
-  const prediksi_penyakit = req.body.prediksi_penyakit;
+  const prediksi_penyakit = req.body.prediksi_penyakit
   //retrieve dari nama input field buat retrieve (misal: <input name="x")
   //let x = req.files.x  
   //sanitasi input
