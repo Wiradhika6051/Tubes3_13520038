@@ -1,2 +1,2 @@
-penyakit: {id_penyakit, nama, dna_file_path}
-hasil_tes : {id_tes,nama,penyakit,status,tanggal_tes, <kemiripan>}
+penyakit: {id_penyakit, nama, rantai_dna_penyusun}
+hasil_tes : {id_tes,nama,penyakit,status,tanggal_tes,kemiripan}
