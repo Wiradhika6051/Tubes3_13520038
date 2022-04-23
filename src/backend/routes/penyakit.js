@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
-
-
 /* menambahkan penyakit ke database */
 router.post('/penyakit', function(req, res) {
   //dapetin nama sama rantai_dna (filenya)
