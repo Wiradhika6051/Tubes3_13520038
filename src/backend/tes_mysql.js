@@ -4,7 +4,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "password",
-    database: "myDB"
+    database: "halodna_db"
 })
 
 
@@ -37,12 +37,14 @@ con.connect(function(err){
         if(err)throw err;
         console.log("number affected"+result.affectedRows);
     })
-    */
+    *///
    //select
-   var sql = "SELECT * FROM customers"
+   //var sql = "CREATE TABLE penyakit(id_penyakit INT NOT NULL AUTO_INCREMENT PRIMARY KEY, nama VARCHAR(255), rantai_dna VARCHAR(511))"
+   var sql = "UPDATE penyakit SET id_penyakit=1"
    con.query(sql,function(err,result,fields){
     if(err)throw err;
-    console.log(result[1]);
+    console.log("tertambahkan 12");
+    //database created
 })
 
 })
