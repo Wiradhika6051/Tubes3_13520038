@@ -40,10 +40,10 @@ con.connect(function(err){
     *///
    //select
    //var sql = "CREATE TABLE penyakit(id_penyakit INT NOT NULL AUTO_INCREMENT PRIMARY KEY, nama VARCHAR(255), rantai_dna VARCHAR(511))"
-   var sql = "UPDATE penyakit SET id_penyakit=1"
+   var sql = "SELECT * FROM hasil_tes WHERE tanggal_tes=STR_TO_DATE('13-04-2022','%d-%m-%Y')q"
    con.query(sql,function(err,result,fields){
     if(err)throw err;
-    console.log("tertambahkan 12");
+    console.log(result);
     //database created
 })
 

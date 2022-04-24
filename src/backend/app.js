@@ -14,12 +14,14 @@ app.use(bodyParser.json());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
+
 
 app.use('/addpenyakit', addDiseaseRouter);
 app.use('/ujidna', dnaTestRouter);
 app.use('/search',searchRouter)
+app.use('/',(req,res)=>res.send("Home Screen"))
 
 
 // catch 404 and forward to error handler
@@ -34,8 +36,8 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  //res.status(err.status || 500);
+  ///res.render('error');
 });
 
 //Here we are configuring express to use body-parser as middle-ware.
