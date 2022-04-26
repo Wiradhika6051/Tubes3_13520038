@@ -19,15 +19,21 @@ router.get('/', function(req, res) {
     console.log("Database terhubung!!")
     let sql = null
     let valid = true
-      //gaada query, kembaliin semua
+    //gaada query, kembaliin semua
       sql = "SELECT * FROM hasil_tes";
     //panggil query
     if(valid){
+      let message = {
+        "valid": true,
+        "desc": "Semua hasil tes di database",
+        "message": null
+      }
       con.query(sql,function(err,result){
         if(err)console.log(err.stack)
-        res.send(result)
+        message["message"] = result
         console.log("Query berhasil!")
         console.log("query: "+sql)
+        res.json(message)
       })
     }
   }
@@ -43,6 +49,11 @@ router.get('/:query', function(req, res) {
     console.log("Database terhubung!!")
     let sql = null
     let valid = true
+    let message = {
+      "valid": true,
+      "desc": null,
+      "message": null
+    }
     //sanitasi input
       //parse query
       let query_date = null
@@ -55,7 +66,9 @@ router.get('/:query', function(req, res) {
         //format gak valid, return null
         valid = false
         console.log("pattern tidak sesuai!")
-        res.send(null)
+        message["valid"] = false;
+        message["desc"] = "pattern di kolom search tidak sesuai format!"
+        res.json(message)
         
       }
       else{
@@ -79,16 +92,19 @@ router.get('/:query', function(req, res) {
         //buat querynya
         if(date){
           //date ada
-          sql = sql+ "tanggal_tes=STR_TO_DATE('"+ query_date+"','%d-%m-%Y')"
+          sql = sql+ "tanggal_tes=STR_TO_DATE('"+ query_date.trim()+"','%d-%m-%Y')"
+          message["desc"] = "hasil tes yang dilakukan pada tanggal " + query_date.trim()
         }
         if(disease_name){
           //nama penyakit ada
           if(date){
             //date ada juga
-            sql = sql+ " AND penyakit=\'"+ query_name+"\'"
+            sql = sql+ " AND penyakit=\'"+ query_name.trim()+"\'"
+            message["desc"] += " serta diduga mengidap penyakit "+query_name.trim()
           }
           else{
             sql = sql+ "penyakit=\'"+ query_name+"\'"
+            message["desc"] = "hasil tes yang diduga mengidap penyakit "+query_name
           }
         }
       }
@@ -96,9 +112,10 @@ router.get('/:query', function(req, res) {
     if(valid){
       con.query(sql,function(err,result){
         if(err)console.log(err.stack)
-        res.send(result)
+        message["message"] = result
         console.log("Query berhasil!")
         console.log("query: "+sql)
+        res.json(message)
       })
     }
   }
