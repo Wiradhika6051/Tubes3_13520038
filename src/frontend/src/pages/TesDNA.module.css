@@ -1,0 +1,128 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    max-width: 1215px;
+  }
+
+.menu {
+    position:relative;
+    margin:auto;
+    margin-top:20px;
+    text-align: center;
+    font-family: 'Roboto';
+}
+
+.masukkan {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.masukkan .masukkanKiriBawah, .masukkan .masukkanKananBawah {
+    margin-top: 28px;
+}
+
+form .masukkanKiriBawah, form .masukkanKananBawah{
+    padding: 0 40px;
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+  }
+
+.masukkan .masukkanKiriBawah input, .masukkan .masukkanKananBawah input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.masukkan .masukkanKiriBawah label, .masukkan .masukkanKananBawah label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.masukkan .masukkanKiriBawah span::before, .masukkan .masukkanKananBawah span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: 0.5s;
+}
+
+.masukkan .masukkanKiriBawah input:focus ~ label,
+.masukkan .masukkanKiriBawah input:valid ~ label,
+.masukkan .masukkanKananBawah input:focus ~ label,
+.masukkan .masukkanKananBawah input:valid ~ label{
+    top: -5px;
+    color: #2691d9;
+}
+  
+.masukkan .masukkanKiriBawah input:focus ~ span::before,
+.masukkan .masukkanKiriBawah input:valid ~ span::before
+.masukkan .masukkanKananBawah input:focus ~ span::before,
+.masukkan .masukkanKananBawah input:valid ~ span::before{
+    width: 100%;
+}
+
+.masukkan .masukkanTengah .masukkanTengahAtas {
+    text-align:start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.masukkan .masukkanTengah .masukkanTengahBawah .uploadBtn{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.masukkan .masukkanTengah .masukkanTengahBawah .uploadBtn .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.masukkan .masukkanTengah .masukkanTengahBawah .uploadBtn input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.bawah .submit{
+    font-size: 21px;
+    background: rgb(0, 153, 180);
+    border-radius: 9px;
+    padding: 7.5px 10px;
+    color: white;
+    transition: all 550ms ease;
+    cursor: pointer;
+    border: none;
+}
+
+.bawah .submit:hover{
+    box-shadow: inset 255px 0 0 0 #33da2d;
+    color: black;
+    font-weight: bold;
+}
