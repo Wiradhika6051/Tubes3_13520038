@@ -8,6 +8,7 @@ import Header from './pages/Header';
 //import Menu from './pages/Menu';
 //import TesDNA from './pages/TesDNA';
 import Footer from './pages/Footer';
+import Pencarian from './pages/Penarian';
 //import Home from './pages/Home';
 import ShowUrutan from './pages/ShowUrutan';
 //import HelloComponent from './component/HelloComponent'
@@ -19,7 +20,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
-    <ShowUrutan />
+    <Pencarian />
     <Footer />
   </React.StrictMode>
 );
