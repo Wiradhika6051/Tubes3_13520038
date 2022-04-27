@@ -1,14 +1,7 @@
-* {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    max-width: 1215px;
-  }
-
 .menu {
+    max-width: 1215px;
     position:relative;
-    margin:auto;
+    margin: auto;
     margin-top:20px;
     text-align: center;
     font-family: 'Roboto';
@@ -19,6 +12,11 @@
     margin-top: 5px;
     margin-bottom: 10px;
     display: flex;
+    justify-content: center;
+}
+
+.masukkanKiri, .masukkanTengah, .masukkanKanan {
+    padding: 10px 40px;
 }
 
 .masukkan .masukkanKiriBawah, .masukkan .masukkanKananBawah {
@@ -125,4 +123,11 @@ form .masukkanKiriBawah, form .masukkanKananBawah{
     box-shadow: inset 255px 0 0 0 #33da2d;
     color: black;
     font-weight: bold;
+}
+
+.batas {
+    margin: auto;
+    width: 515px;
+    padding: 19px 0;
+    border-bottom: 2px solid #000;
 }

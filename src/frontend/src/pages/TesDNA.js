@@ -46,6 +46,11 @@ class TesDNA extends React.Component {
                     <div className={styles.bawah}>
                         <button onClick='' className={styles.submit}>Submit</button>
                     </div>
+                    <div className={styles.batas}></div>
+                    <h2> Hasil Tes </h2>
+                    <div className={styles.hasil}>
+                        <span id="tanggal"></span> - <span id="pengguna"></span> - <span id="penyakit"></span> - <span id="True/False"></span>
+                    </div>
                 </div>
             </Fragment>
         )

@@ -1,12 +1,5 @@
-* {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    max-width: 1215px;
-}
-
 .postJudul {
+    margin: auto;
     border: 1px solid black;
     width: 200px;
     padding: 10px;

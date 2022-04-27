@@ -1,14 +1,7 @@
-* {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    max-width: 1215px;
-  }
-
 .menu {
+    max-width: 1215px;
     position:relative;
-    margin:auto;
+    margin: auto;
     margin-top:20px;
     text-align: center;
     font-family: 'Roboto';
@@ -19,6 +12,11 @@
     margin-top: 5px;
     margin-bottom: 10px;
     display: flex;
+    justify-content: center;
+}
+
+.masukkanKiri, .masukkanKanan {
+    padding: 10px 40px;
 }
 
 .masukkan .masukkanKiriBawah {
@@ -106,7 +104,7 @@ form .masukkanKiriBawah{
     opacity: 0;
 }
 
-.bawah .submit, .backMenu .menu {
+.bawah .submit {
     font-size: 21px;
     background: rgb(0, 153, 180);
     border-radius: 9px;
@@ -117,7 +115,7 @@ form .masukkanKiriBawah{
     border: none;
 }
 
-.bawah .submit:hover, .backMenu .menu:hover {
+.bawah .submit:hover {
     box-shadow: inset 255px 0 0 0 #33da2d;
     color: black;
     font-weight: bold;

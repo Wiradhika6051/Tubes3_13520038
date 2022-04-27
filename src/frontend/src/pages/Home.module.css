@@ -1,0 +1,17 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.navigation a {
+    padding: 10px 40px;
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+    background: rgba(41, 41, 243, 0.473);
+    border-radius: 4px;
+}

@@ -35,9 +35,6 @@ class TambahkanPenyakit extends React.Component {
                     <div className={styles.bawah}>
                         <button onClick='' className={styles.submit}>Submit</button>
                     </div>
-                    <div className={styles.backMenu}>
-                        <button onClick='' className={styles.menu}>Menu</button>
-                    </div>
                 </div>
             </Fragment>
         )

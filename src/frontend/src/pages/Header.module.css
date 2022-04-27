@@ -1,13 +1,9 @@
-* {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    max-width: 1215px;
-  }
-
 header .title {
+    font-family: "Poppins", sans-serif;
+    margin: auto;
+    max-width: 1215px;
     margin-top: 20px;
+    margin-bottom: 20px;
     max-width: 945px;
     padding: 19px 0;
     text-align: center;

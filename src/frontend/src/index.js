@@ -1,27 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-//import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import TambahkanPenyakit from './pages/TambahkanPenyakit.js';
 import Header from './pages/Header';
-//import Menu from './pages/Menu';
-//import TesDNA from './pages/TesDNA';
-import Footer from './pages/Footer';
-import Pencarian from './pages/Penarian';
-//import Home from './pages/Home';
-import ShowUrutan from './pages/ShowUrutan';
-//import HelloComponent from './component/HelloComponent'
-//import {BrowserRouter, Route, Link} from 'react-router-dom'
-
-//ReactDOM.render(<HelloComponent/>, document.getElementById('root'));
+import Home from './pages/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
-    <Pencarian />
-    <Footer />
+    <Home />
   </React.StrictMode>
 );
 
