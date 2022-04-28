@@ -4,6 +4,9 @@ const path = require("path");
 const cors = require("cors");
 const mysql = require('mysql');
 var fs = require('fs');
+var multipart = require('parse-multipart');
+var bodyParser     = require('body-parser');
+app.use( bodyParser.urlencoded({ extended: true }));
 
 const con = mysql.createConnection({
   host: "localhost",
@@ -29,11 +32,24 @@ var storage = multer({storage:diskStorage})
 router.post('/',
 storage.single("myFile")
 , function(req, res) {
+ // console.log(req)
   //dapetin nama sama rantai_dna (filenya)
-  const nama = req.body.inputPenyakit;
-  console.log(req.body)
-  console.log(nama)
+ // console.log(req.body)
+ // console.log("a:"+req.body.name)
+ let header = req.headers["content-type"]
+ console.log(header)
+  const body = req.body
+  console.log(typeof req.body)
+  console.log("cd")
+  console.log(body)
+  //let temp = body.split('\r\n')
+  console.log(body.length)
+  const nama = req.body.name;
+  console.log("C:"+nama)
+  let kirai = req["body"]["name"]
+  console.log(kirai)
   const dna_file = req.file.myfile
+  console.log("b:"+req.file)
   if(!dna_file){
     return res.status(400).send("Tidak ada file yang dikirimkan!")
   }
