@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 var addDiseaseRouter = require('./routes/penyakit');
 var dnaTestRouter = require('./routes/ujidna');
 var searchRouter = require('./routes/search')
-
+app.use(express.static(path.join(__dirname,"..","..","..","/test/input_file")));
 
 var app = express();
 //app.use(bodyParser.urlencoded({ extended: true }));

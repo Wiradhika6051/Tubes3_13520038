@@ -12,7 +12,6 @@ const con = mysql.createConnection({
   database: "halodna_db"
 })
 
-app.use(express.static(path.join(__dirname,"..","..","..","/test/input_file")));
 //setup multer
 const diskStorage = multer.diskStorage({
   destination: function(req,files,callback){
@@ -48,7 +47,7 @@ storage.single("myFile")
   //sanitasi input
   const pattern = /[AGCT]+$/
   if(pattern.test(data)){
-    sql = "INSERT INTO penyakit(nama,rantai_dna) VALUES("+nama+","+data+")"
+    sql = "INSERT INTO penyakit(nama,rantai_dna) VALUES(\""+nama+"\",\""+data+"\")"
     con.query(sql,function(err,result){
       if(err)console.log(err.stack)
       console.log("query: "+sql)
