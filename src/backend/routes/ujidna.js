@@ -3,9 +3,9 @@ const multer = require("multer")
 const path = require("path");
 const cors = require("cors");
 const mysql = require('mysql');
-let kmp = require('./kmp');
+let kmp = require('../algo/kmp');
 var fs = require('fs');
-let levenshtein = require('./levenshtein.js');
+let levenshtein = require('../algo/levenshtein.js');
 const con = mysql.createConnection({
   host: "localhost",
   user: "root",
