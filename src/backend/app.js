@@ -8,20 +8,22 @@ var addDiseaseRouter = require('./routes/penyakit');
 var dnaTestRouter = require('./routes/ujidna');
 var searchRouter = require('./routes/search')
 
+
 var app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 
-app.use('/addpenyakit', addDiseaseRouter);
-app.use('/ujidna', dnaTestRouter);
-app.use('/search',searchRouter)
-app.use('/',(req,res)=>res.send("Home Screen"))
+app.use('/api/addpenyakit', addDiseaseRouter);
+app.use('/api/ujidna', dnaTestRouter);
+app.use('/api/search',searchRouter)
+app.use('/api',(req,res)=>res.send("Home Screen"))
 
 
 // catch 404 and forward to error handler
@@ -45,8 +47,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.listen(3000,()=>{
-  console.log("listen to port 3000")
+app.listen(8080,()=>{
+  console.log("listen to port 8080")
 })
 
 module.exports = app;
