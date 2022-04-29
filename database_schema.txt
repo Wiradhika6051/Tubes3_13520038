@@ -1,2 +1,0 @@
-penyakit: {id_penyakit, nama, rantai_dna}
-hasil_tes : {id_tes,nama,penyakit,status,tanggal_tes, kemiripan}
