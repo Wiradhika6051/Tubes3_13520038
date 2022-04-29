@@ -1,4 +1,0 @@
-Buat klarifikasi, super(); sebenernya ga wajib klo default construcotrnya gaada argument, tapi sebagai best practice sebaiknya dikasih aja super() di constructor child (biar jelas klo constructornya manggil parent constructor)
-
-To read: https://stackoverflow.com/questions/2054022/is-it-unnecessary-to-put-super-in-constructor
-
