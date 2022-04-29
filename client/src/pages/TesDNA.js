@@ -53,7 +53,7 @@ function TesDNA() {
         }
         else {
             try {
-                const res = await axios.post("http://localhost:5000/upload", formData)
+                const res = await axios.post("http://localhost:5000/ujiDNA", formData)
                 console.log(res, '<= res')
                 swal({
                     title: "Success!",
