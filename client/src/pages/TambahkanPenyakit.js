@@ -1,47 +1,66 @@
 import styles from './TambahkanPenyakit.module.css'
 import React, { useState } from 'react'
 import axios from 'axios';
+import swal from 'sweetalert';
 
 function TambahkanPenyakit() {
 
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState();
-    const [name, setName] = useState();
+    const [namaPenyakit, setNamaPenyakit] = useState();
     
     const saveFile = e => {
         setFile(e.target.files[0])
         setFileName(e.target.files[0].name)
-        console.log(file, "<= file");
-        console.log(fileName, "<= file name");
-        console.log(name, "<= name");
     }
 
     const uploadFile = async () => {
+        console.log(file, "<= file");
+        console.log(fileName, "<= file name");
+        console.log(namaPenyakit, "<= name");
+
         const formData = new FormData();
         formData.append("file", file)
         formData.append("fileName", fileName)
-        formData.append("name", name);
+        formData.append("namaPenyakit", namaPenyakit);
 
-        try {
-            const res = await axios.post("http://localhost:5000/upload", formData)
-            console.log(res, '<= res')
-        } catch (error) {
-            console.log(error, "<= error catch upload file")
+        if ( namaPenyakit === undefined ) {
+            swal({
+                title: "Failed!",
+                text: "Nama Penyakit Harus diisi",
+                icon: "error",
+                button: "OK"
+            })
+        }
+        else if ( file === undefined ){
+            swal({
+                title: "Failed!",
+                text: "Tidak ada file yang diupload",
+                icon: "error",
+                button: "OK"
+            })
+        }
+        else {
+            try {
+                const res = await axios.post("http://localhost:5000/upload", formData)
+                console.log(res, '<= res')
+                swal({
+                    title: "Success!",
+                    text: "Telah berhasil menambahkan penyakit",
+                    icon: "success",
+                    button: "OK"
+                })
+            } catch (error) {
+                console.log(error, "<= error catch upload file")
+                swal({
+                    title: "Failed!",
+                    text: "Tidak berhasil menambahkan penyakit",
+                    icon: "error",
+                    button: "OK"
+                })
+            }
         }
     }
-
-    /*
-    const send = event => {
-        const data = new FormData();
-        data.append('name', name);
-        data.append('file', file);
-        
-        axios.post('http://localhost:3000/upload', data)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-    };
-    */
-
 
     return (
             <div className = {styles.menu}>
@@ -51,12 +70,11 @@ function TambahkanPenyakit() {
                         <div className = {styles.masukkanKiri}>
                             <div className={styles.masukkanKiriBawah}>
                                 <input
-                                required
-                                type='text'
-                                id='name' 
-                                onChange={event => {
-                                const { value } = event.target;
-                                setName(value);
+                                    type='text'
+                                    id='inputNamaPenyakit' 
+                                    onChange={event => {
+                                        const { value } = event.target;
+                                        setNamaPenyakit(value);
                                 }} />
                                 <span></span>
                                 <label>Nama Penyakit</label>
@@ -74,10 +92,6 @@ function TambahkanPenyakit() {
                                     type='file' 
                                     id='file'
                                     onChange={saveFile}
-                                    /*onChange={event => {
-                                    const file = event.target.files[0];
-                                    setFile(file); 
-                                    }}*/ 
                                     />
                                 </div>
                             </div>
@@ -86,7 +100,6 @@ function TambahkanPenyakit() {
                 </form>
                 <div className={styles.bawah}>
                     <button 
-                    /*onClick={send}*/
                     onClick={uploadFile} 
                     className={styles.submit}
                     >Submit</button>

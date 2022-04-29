@@ -15,10 +15,11 @@ app.get("/", (req, rest) => {
 })
 
 app.post("/upload", (req, res) => {
-    const newPath = `${__dirname}/storage/`
-    const file = req.files.file
-    const fileName = file.name
-
+    const newPath = `${__dirname}/storage/` // Lokasi Penyimpanan File Upload
+    const file = req.files.file // File Upload
+    const fileName = file.name // Nama File Upload
+    const namaPenyakit = req.body.namaPenyakit // Nama Penyakit yang telah diinput user
+    
     file.mv(`${newPath}${fileName}`, (err) => {
         if (err) {
             return ( res.status(500).send({ message : "File upload failed", code: 200 }))
