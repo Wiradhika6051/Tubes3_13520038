@@ -12,4 +12,5 @@ halaman web akan terbuka secara otomatis
 
 
 
-# note: udah deadline dan kelupaan masukin sqldump, sqldump ada di branch sebelah 'withsqldump'
+# note: udah deadline dan kelupaan masukin sqldump, sqldump ada di drive:
+https://drive.google.com/file/d/1aSjlPrGm8yaoxcRc9XJsbtcc7CJ4q8rE/view?usp=sharing
