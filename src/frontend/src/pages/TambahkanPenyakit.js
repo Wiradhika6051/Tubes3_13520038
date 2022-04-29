@@ -19,7 +19,7 @@ class TambahkanPenyakit extends React.Component {
         console.log(formData.get("name"))
         console.log(formData.get("file"))
         axios
-      .post('http://localhost:8080/api/addpenyakit', formData/*,({headers:{'Content-Type':'multipart/form-data'}})*/)
+      .post('http://localhost:8080/api/addpenyakit', formData,({headers:{'Content-Type':'multipart/form-data'}}))
           .then((res) => {
             
             alert("File Upload success dan:"+res);
