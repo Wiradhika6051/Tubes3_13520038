@@ -1,12 +1,11 @@
 var express = require('express');
 const multer = require("multer")
 const path = require("path");
-const cors = require("cors");
 const mysql = require('mysql');
 var fs = require('fs');
 var multipart = require('parse-multipart');
 var bodyParser     = require('body-parser');
-app.use( bodyParser.urlencoded({ extended: true }));
+//app.use( bodyParser.urlencoded({ extended: true }));
 
 const con = mysql.createConnection({
   host: "localhost",
@@ -30,8 +29,8 @@ var router = express.Router();
 var storage = multer({storage:diskStorage})
 /* menambahkan penyakit ke database */
 router.post('/',
-storage.single("myFile")
-, function(req, res) {
+/*storage.array('myFile',5)
+,*/ function(req, res) {
  // console.log(req)
   //dapetin nama sama rantai_dna (filenya)
  // console.log(req.body)
@@ -43,7 +42,7 @@ storage.single("myFile")
   console.log("cd")
   console.log(body)
   //let temp = body.split('\r\n')
-  console.log(body.length)
+  console.log(req.param.name)
   const nama = req.body.name;
   console.log("C:"+nama)
   let kirai = req["body"]["name"]
@@ -77,4 +76,4 @@ storage.single("myFile")
 
 module.exports = router;
 
-var express = require('express');
+//var express = require('express');

@@ -13,13 +13,13 @@ class TambahkanPenyakit extends React.Component {
       }
       submitForm() {
         const formData = new FormData();
-        formData.append("name", this.state.name);
-        formData.append("file", this.state.selectedFile);
+        formData.set("name", this.state.name);
+        formData.set("file", this.state.selectedFile);
         console.log("aman cuk")
         console.log(formData.get("name"))
         console.log(formData.get("file"))
         axios
-          .post('http://localhost:8080/api/addpenyakit', formData)
+      .post('http://localhost:8080/api/addpenyakit', formData/*,({headers:{'Content-Type':'multipart/form-data'}})*/)
           .then((res) => {
             
             alert("File Upload success dan:"+res);

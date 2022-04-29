@@ -3,12 +3,14 @@ var express = require('express');
 var path = require('path');
 const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
+const multer = require("multer")
 
 var addDiseaseRouter = require('./routes/penyakit');
 var dnaTestRouter = require('./routes/ujidna');
-var searchRouter = require('./routes/search')
+var searchRouter = require('./routes/search');
 
 var app = express();
+//console.log(typeof app)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
@@ -21,7 +23,18 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(express.static(path.join(__dirname,"..","..","..","/test/input_file")));
-
+const diskStorage = multer.diskStorage({
+  destination: function(req,files,callback){
+    //panggil callback function
+    callback(null,path.join(__dirname,"..","..","..","/test/input_file"))
+  },
+  filename: function(req,files,callback){
+    callback(null,file.fieldname+"-"+file.originalname+path.extname(file.originalname))
+  }
+  }
+);
+var storage = multer({storage:diskStorage})
+app.use(storage.array())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //app.use(express.static(path.join(__dirname, 'public')));
