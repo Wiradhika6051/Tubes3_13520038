@@ -39,7 +39,7 @@ router.post('/',
   const fileName = file.name // Nama File Upload
   const namaPenyakit = req.body.namaPenyakit // Nama Penyakit yang telah diinput user
     
-  file.mv(fileName, (err) => {
+  file.mv('\\routes\\'+fileName, (err) => {
       if (err) {
             return ( res.status(500).send({ message : "File upload failed", code: 200 }))
         }
@@ -50,7 +50,7 @@ router.post('/',
   console.log(newPath+fileName)
   let data = null;
   try{
-  data =  fs.readFileSync(newPath+fileName,'utf8')
+  data =  fs.readFileSync(fileName,'utf8')
   }catch(err){
     console.log(err)
   }
