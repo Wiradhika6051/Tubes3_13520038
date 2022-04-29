@@ -9,3 +9,7 @@ cd ke folder src/frontend
 ketik `npm install sweetalert`
 run `npm start`
 halaman web akan terbuka secara otomatis
+
+
+
+# note: udah deadline dan kelupaan masukin sqldump, sqldump ada di branch sebelah 'withsqldump'
