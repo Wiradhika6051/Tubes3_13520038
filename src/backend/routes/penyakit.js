@@ -34,41 +34,29 @@ router.post('/',
   //dapetin nama sama rantai_dna (filenya)
  // console.log(req.body)
  // console.log("a:"+req.body.name)
- const newPath = `${__dirname}/storage/addPenyakit` // Lokasi Penyimpanan File Upload
+ const newPath = `${__dirname}\\storage\\addPenyakit\\` // Lokasi Penyimpanan File Upload
   const file = req.files.file // File Upload
   const fileName = file.name // Nama File Upload
   const namaPenyakit = req.body.namaPenyakit // Nama Penyakit yang telah diinput user
     
-  file.mv(`${newPath}${fileName}`, (err) => {
+  file.mv(fileName, (err) => {
       if (err) {
             return ( res.status(500).send({ message : "File upload failed", code: 200 }))
         }
 
     })
-    /*
- let header = req.headers["content-type"]
- console.log(header)
-  const body = req.body
-  console.log(typeof req.body)
-  console.log("cd")
-  console.log(body)
-  //let temp = body.split('\r\n')
-  console.log(req.param.name)
-  const nama = req.body.name;
-  console.log("C:"+nama)
-  let kirai = req["body"]["name"]
-  console.log(kirai)
-  const dna_file = req.file.myfile
-  console.log("b:"+req.file)
-  */
   console.log("aman")
-  //res.send(rantai_dna_file)
-
-  //retrieve dari nama input field buat retrieve (misal: <input name="x")
-  //let file = req.files.myfile
-  //baca file
-  let data =  fs.readFileSync(`${newPath}${fileName}`)
+  console.log(fileName)
+  console.log(newPath+fileName)
+  let data = null;
+  try{
+  data =  fs.readFileSync(newPath+fileName,'utf8')
+  }catch(err){
+    console.log(err)
+  }
+  console.log("ngeeg")
   //sanitasi input
+  console.log(data)
   const pattern = /[AGCT]+$/
   if(pattern.test(data)){
     sql = "INSERT INTO penyakit(nama,rantai_dna) VALUES(\""+namaPenyakit+"\",\""+data+"\")"
@@ -79,6 +67,7 @@ router.post('/',
       res.status(200).send({ message : "file uploaded", code: 200 })
     })
   }
+  console.log("asu")
   //asumsi yang disimpan itu stringnya
 
 });
