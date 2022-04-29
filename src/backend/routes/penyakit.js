@@ -34,6 +34,18 @@ router.post('/',
   //dapetin nama sama rantai_dna (filenya)
  // console.log(req.body)
  // console.log("a:"+req.body.name)
+ const newPath = `${__dirname}/storage/addPenyakit` // Lokasi Penyimpanan File Upload
+  const file = req.files.file // File Upload
+  const fileName = file.name // Nama File Upload
+  const namaPenyakit = req.body.namaPenyakit // Nama Penyakit yang telah diinput user
+    
+  file.mv(`${newPath}${fileName}`, (err) => {
+      if (err) {
+            return ( res.status(500).send({ message : "File upload failed", code: 200 }))
+        }
+
+    })
+    /*
  let header = req.headers["content-type"]
  console.log(header)
   const body = req.body
@@ -48,25 +60,23 @@ router.post('/',
   console.log(kirai)
   const dna_file = req.file.myfile
   console.log("b:"+req.file)
-  if(!dna_file){
-    return res.status(400).send("Tidak ada file yang dikirimkan!")
-  }
+  */
   console.log("aman")
   //res.send(rantai_dna_file)
 
   //retrieve dari nama input field buat retrieve (misal: <input name="x")
   //let file = req.files.myfile
   //baca file
-  let data =  fs.readFileSync(path.join(__dirname,"..","..","..","test","input_file","myFile-"+file.originalname+path.extname(file.originalname))).toString()
+  let data =  fs.readFileSync(`${newPath}${fileName}`)
   //sanitasi input
   const pattern = /[AGCT]+$/
   if(pattern.test(data)){
-    sql = "INSERT INTO penyakit(nama,rantai_dna) VALUES(\""+nama+"\",\""+data+"\")"
+    sql = "INSERT INTO penyakit(nama,rantai_dna) VALUES(\""+namaPenyakit+"\",\""+data+"\")"
     con.query(sql,function(err,result){
       if(err)console.log(err.stack)
       console.log("query: "+sql)
       message = {}
-      res.json(message)
+      res.status(200).send({ message : "file uploaded", code: 200 })
     })
   }
   //asumsi yang disimpan itu stringnya

@@ -5,6 +5,7 @@ const res = require('express/lib/response')
 
 var addDiseaseRouter = require('./routes/penyakit');
 var dnaTestRouter = require('./routes/ujidna');
+var searchRouter = require('./routes/search');
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -16,7 +17,7 @@ app.use(express.static('storage'))
 app.get("/", (req, rest) => {
     res.send("Hello from express")
 })
-
+/*
 app.post("/addpenyakit", (req, res) => {
     const newPath = `${__dirname}/storage/addPenyakit` // Lokasi Penyimpanan File Upload
     const file = req.files.file // File Upload
@@ -47,8 +48,9 @@ app.post("/ujiDNA", (req, res) => {
         res.status(200).send({ message : "file uploaded", code: 200 })
     })
 })
-
+*/
 app.use('/addPenyakit', addDiseaseRouter);
 app.use('/ujiDNA', dnaTestRouter);
+app.use('/search',searchRouter)
 
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
