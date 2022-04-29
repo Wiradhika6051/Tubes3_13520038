@@ -12,9 +12,33 @@ h1 {
 }
 
 .search {
-    width: 30%;
+    width: 100%;
 }
 
 ul li {
     font-size: 20px;
-} 
+}
+
+.bawah .submit{
+    font-size: 21px;
+    background: rgb(0, 153, 180);
+    border-radius: 9px;
+    padding: 7.5px 10px;
+    color: white;
+    transition: all 550ms ease;
+    cursor: pointer;
+    border: none;
+}
+
+.bawah .submit:hover{
+    box-shadow: inset 255px 0 0 0 #33da2d;
+    color: black;
+    font-weight: bold;
+}
+
+.batas {
+    margin: auto;
+    width: 515px;
+    padding: 19px 0;
+    border-bottom: 2px solid #000;
+}
